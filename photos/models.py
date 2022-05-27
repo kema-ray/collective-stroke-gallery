@@ -4,7 +4,9 @@ from django.db import models
 # Create your models here.
 class Photos(models.Model):
     image_name = models.CharField(max_length=30)
-    description = models.TextField(max_length=100, blank=False)
+    description = models.TextField()
+    photo_category = models.ForeignKey('Category',on_delete=models.CASCADE,default='')
+    photo_location = models.ForeignKey('Location', on_delete=models.SET_NULL,default = '', null = True)
 
     def __str__(self):
         return self.image_name
