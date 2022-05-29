@@ -1,10 +1,10 @@
-{%extends 'base.html'%} 
+{% extends 'base.html' %} 
 {% block content %}
 <div class="container">
 
   <div class="row">
-    {% if images%}
-      <h2>Found {{ images|length }} of searched term {{message}}</h2>
+    {% if image%}
+      <h2>Found {{ image|length }} of searched term {{message}}</h2>
     {% else %}
       <h2> Found 0 photos for the search term {{message}}</h2>
     {% endif %}
@@ -13,12 +13,69 @@
 
   <div class="row">
 
-  {% if images %}
-    {% for images in image %}
+  {% if image %}
+    <!-- {% for images in image %}
       <div class="col-sm-6 col-md-3">
           <h1>{{images.photo_category}}</h1>
       </div>
-    {% endfor %}
+    {% endfor %} -->
+    {% for images in image %}
+        <div class="col-md-3">
+
+            <div class="panel panel-default">
+                <div class="panel-body" style=" box-shadow: 0 5px 10px 0 rgba(15, 14, 20, 0.87)">
+                    <a href="" data-toggle="modal" data-target="#staticBackdrop{{images.id}}">
+                        <img src="{{images.image.url}}" class="img-responsive styled" alt="unavailable" style="height: 260px; width:520px;"></a>
+                </div>
+                <div class="panel-footer text-center">
+                    <b>{{images.name}}</b></div>
+            </div>
+
+
+            <div class="modal fade" id="staticBackdrop{{images.id}}" data-backdrop="static" data-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h3 class="modal-title" id="staticBackdropLabel text-center">{{images.name}}</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <img src="{{images.image.url}}" class="img-responsive" alt="unavailable"
+                                style=" box-shadow: 0 4px 8px 0 rgba(17, 16, 19, 0.87)">
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="col-md-4">
+                                <p><b>Description:</b> {{images.description}}</p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <p><b>Location:</b> {{images.photo_location}}</p>
+                            </div>
+                            <div class="col-md-4">
+                                <p><b>Category:</b> {{images.photo_category}}</p>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer row">
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
   {% endif %}
   </div>
 </div>

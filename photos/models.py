@@ -14,8 +14,13 @@ class Photos(models.Model):
 
     @classmethod
     def search_by_photo_category(cls,search_term):
-        images = cls.objects.filter(photo_category__icontains = search_term)
-        return images
+        image = cls.objects.filter(name__icontains = search_term)
+        return image
+
+    def update_image(self,Name=None,category=None):
+        self.name = Name if Name else self.Name
+        self.photo_category = category if category else self.photo_category
+        self.save()
 
     def __str__(self):
         return self.name
