@@ -5,15 +5,15 @@
 <div class='container-fluid'>
     <div class="row">
         {% for image in images %}
-        <div class="col-md-4">
+        <div class="col-md-3">
 
             <div class="panel panel-default">
                 <div class="panel-body" style=" box-shadow: 0 5px 10px 0 rgba(15, 14, 20, 0.87)">
                     <a href="" data-toggle="modal" data-target="#staticBackdrop{{image.id}}">
-                        <img src="{{image.image.url}}" class="img-responsive styled" alt="unavailable" style="height: 250px; width:500px;"></a>
+                        <img src="{{image.image.url}}" class="img-responsive styled" alt="unavailable" style="height: 260px; width:520px;"></a>
                 </div>
                 <div class="panel-footer text-center">
-                    <b>{{image.image_name}}</b></div>
+                    <b>{{image.name}}</b></div>
             </div>
 
 
@@ -23,7 +23,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
 
-                            <h3 class="modal-title" id="staticBackdropLabel text-center">{{image.image_name}}</h3>
+                            <h3 class="modal-title" id="staticBackdropLabel text-center">{{image.name}}</h3>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>

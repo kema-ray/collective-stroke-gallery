@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Photos(models.Model):
-    image_name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30)
     description = models.TextField()
     image = models.ImageField(upload_to = 'pictures/', default='No image')
     photo_category = models.ForeignKey('Category',on_delete=models.CASCADE,default='')
@@ -14,11 +14,11 @@ class Photos(models.Model):
 
     @classmethod
     def search_by_photo_category(cls,search_term):
-        images = cls.objects.filter(name__icontains = search_term)
+        images = cls.objects.filter(photo_category__icontains = search_term)
         return images
 
     def __str__(self):
-        return self.image_name
+        return self.name
 
 class Category(models.Model):
     category_name = models.CharField(max_length=30)
