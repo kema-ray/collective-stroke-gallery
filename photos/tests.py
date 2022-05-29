@@ -45,3 +45,31 @@ class CategoryTestClass(TestCase):
         self.test_category = Category(category_name = 'Travel')
         self.test_category.save_category_name()
         self.test_category.delete_category_name()
+
+class LocationTestClass(TestCase):
+
+    def setUp(self):
+        self.Mombasa = Location(location='Mombasa')
+        self.Mombasa.save_location()
+
+    def tearDown(self):
+        Location.objects.all().delete()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.Mombasa,Location))
+
+    def test_save_method(self):
+        self.Mombasa.save_location()
+        Locations = Location.objects.all()
+        print(Locations)
+        self.assertTrue(len(Locations)==1)
+
+    def test_delete_method(self):
+        self.Mombasa.delete_location()
+        Destination = Location.objects.all()
+        print(Destination)
+        self.assertTrue(len(Destination)==0)
+
+    def test_update_location(self):
+        updated_location = Location.objects.filter(location='Nairobi')
+        self.assertFalse(len(updated_location)> 0)
