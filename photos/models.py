@@ -12,6 +12,9 @@ class Photos(models.Model):
     def save_photo(self):
         self.save()
 
+    def delete_photo(self):
+        self.save()
+
     @classmethod
     def search_by_photo_category(cls,search_term):
         image = cls.objects.filter(name__icontains = search_term)
@@ -31,6 +34,9 @@ class Category(models.Model):
     def save_category_name(self):
         self.save()
 
+    def delete_category_name(self):
+        self.delete()
+
     def __str__(self):
         return self.category_name
 
@@ -39,6 +45,9 @@ class Location(models.Model):
 
     def save_location(self):
         self.save()
+    
+    def delete_location(self):
+        self.delete()
 
     def __str__(self):
         return self.location
