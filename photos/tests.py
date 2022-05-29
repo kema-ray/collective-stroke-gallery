@@ -29,3 +29,19 @@ class PhotosTestClass(TestCase):
     def test_delete_food(self):
         self.new_food.save_photo()
         self.new_food.delete_photo()
+
+class CategoryTestClass(TestCase):
+    def setUp(self):
+        self.Hike = Category(category_name = 'Hike')
+        self.Hike.save_category_name()
+
+    def tearDown(self):
+        Category.objects.all().delete()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.Hike, Category))
+
+    def test_save_category(self):
+        self.test_category = Category(category_name = 'Travel')
+        self.test_category.save_category_name()
+        self.test_category.delete_category_name()
