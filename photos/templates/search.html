@@ -1,16 +1,31 @@
-{% extends 'base.html' %}
+{%extends 'base.html'%} 
 {% block content %}
-{{block.super}}
-<title>Photo-Gallery</title>
-<div class='container-fluid'>
-    <div class="row">
-        {% for image in images %}
+<div class="container">
+
+  <div class="row">
+    {% if images%}
+      <h2>Found {{ images|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 photos for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+  {% if images %}
+    <!-- {% for images in image %}
+      <div class="col-sm-6 col-md-3">
+          <h1>{{images.search_category}}</h1>
+      </div>
+    {% endfor %} -->
+    {% for image in images %}
         <div class="col-md-4">
 
             <div class="panel panel-default">
                 <div class="panel-body" style=" box-shadow: 0 5px 10px 0 rgba(15, 14, 20, 0.87)">
                     <a href="" data-toggle="modal" data-target="#staticBackdrop{{image.id}}">
-                        <img src="{{image.image.url}}" class="img-responsive styled" alt="unavailable" style="height: 250px; width:500px;"></a>
+                        <img src="{{image.image.url}}" class="img-responsive styled" alt="unavailable"></a>
                 </div>
                 <div class="panel-footer text-center">
                     <b>{{image.image_name}}</b></div>
@@ -36,15 +51,12 @@
                         </div>
 
                         <div class="modal-footer">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <p><b>Description:</b> {{image.description}}</p>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <p><b>Location:</b> {{image.photo_location}}</p>
-                            </div>
-                            <div class="col-md-4">
-                                <p><b>Category:</b> {{image.photo_category}}</p>
                             </div>
 
                         </div>
@@ -61,10 +73,7 @@
             </div>
         </div>
         {% endfor %}
-    </div>
+  {% endif %}
+  </div>
 </div>
-
-
-</div>
-
 {% endblock %}
