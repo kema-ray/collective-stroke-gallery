@@ -2,5 +2,66 @@
 {% block content %}
 {{block.super}}
 <title>Photo-Gallery</title>
-<p>Welcome to the photo gallery</p>
+<div class='container-fluid'>
+    <div class="row">
+        {% for image in images %}
+        <div class="col-md-4">
+
+            <div class="panel panel-default">
+                <div class="panel-body" style=" box-shadow: 0 5px 10px 0 rgba(15, 14, 20, 0.87)">
+                    <a href="" data-toggle="modal" data-target="#staticBackdrop{{image.id}}">
+                        <img src="{{image.image.url}}" class="img-responsive styled" alt="unavailable"></a>
+                </div>
+                <div class="panel-footer text-center">
+                    <b>{{image.image_name}}</b></div>
+            </div>
+
+
+            <div class="modal fade" id="staticBackdrop{{image.id}}" data-backdrop="static" data-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <h3 class="modal-title" id="staticBackdropLabel text-center">{{image.image_name}}</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <img src="{{image.image.url}}" class="img-responsive" alt="unavailable"
+                                style=" box-shadow: 0 4px 8px 0 rgba(17, 16, 19, 0.87)">
+                        </div>
+
+                        <div class="modal-footer">
+                            <div class="col-md-6">
+                                <p><b>Description:</b> {{image.description}}</p>
+                            </div>
+
+                            <div class="col-md-6">
+                                <p><b>Location:</b> {{image.photo_location}}</p>
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer row">
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+</div>
+
 {% endblock %}
