@@ -4,7 +4,7 @@
 
 
 ## Description
-This is a photo gallery where I will display my photos for others to see.A user can click on an image and be able to see the name of the image,category and location. A user can also copy an image link for the particular photo that catches the eye.
+This is a photo gallery where I will display my photos for others to see.A user can click on an image and be able to see the name of the image,category and location. A user can also copy an image link for the particular photo that catches the eye. In addition, the user is able to search the images according to a particular category.
 
 
 
