@@ -8,7 +8,7 @@
         <div class="col-md-3">
 
             <div class="panel panel-default">
-                <div class="panel-body" style=" box-shadow: 0 5px 10px 0 rgba(15, 14, 20, 0.87)">
+                <div class="panel-body" style=" box-shadow: 0 5px 10px 0 rgba(236, 236, 239, 0.87)">
                     <a href="" data-toggle="modal" data-target="#staticBackdrop{{image.id}}">
                         <img src="{{image.image.url}}" class="img-responsive styled" alt="unavailable" style="height: 260px; width:520px;"></a>
                 </div>
@@ -32,7 +32,7 @@
                         <div class="modal-body">
 
                             <img src="{{image.image.url}}" class="img-responsive" alt="unavailable"
-                                style=" box-shadow: 0 4px 8px 0 rgba(17, 16, 19, 0.87)">
+                                style=" box-shadow: 0 4px 8px 0 rgba(236, 235, 239, 0.87)">
                         </div>
 
                         <div class="modal-footer">
@@ -50,6 +50,11 @@
                         </div>
 
                         <div class="modal-footer row">
+                            <div class="col-md-8">
+                                <input type="text" value="https://collective-gallery.herokuapp.com/media/{{image.image}}"
+                                    id="myInput">
+                                <button class="btn btn-info" onclick="myFunction()">Copy Link</button>
+                            </div>
                             <div class="col-md-4">
                                 <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
                             </div>
@@ -66,5 +71,14 @@
 
 
 </div>
+<script>
+    function myFunction() {
+        var copyText = document.getElementById("myInput");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999)
+        document.execCommand("copy");
+        alert("Copied the link: " + copyText.value);
+    }
+</script>
 
 {% endblock %}
