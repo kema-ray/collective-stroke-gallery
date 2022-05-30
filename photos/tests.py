@@ -1,4 +1,3 @@
-from email.mime import image
 from django.test import TestCase
 from .models import Photos,Category,Location
 
